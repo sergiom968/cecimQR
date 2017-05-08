@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <script src='js/jquery.min.js'></script>
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <title>CECIM Scanner</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                  <h3 class="col s12 center">Ingreso</h3>
+                  <div class="center"><img src="img/user.png" width="150"/></div>
+                  <div class="input-field col s10 offset-s1">
+                    <input id="txtEmail" type="email" name="email" required="required" class="validate black-text"/>
+                    <label for="txtEmail">Correo</label>
+                  </div>
+                  <div class="input-field col s10 offset-s1">
+                    <input id="txtPass" type="password" name="pass" required="required" class="validate black-text"/>
+                    <label for="txtPass">Contraseña (Documento)</label>
+                  </div>
+                  <div class="col s12">
+                    <p style="display: none;" class="red-text errText">Usuario o contraseña incorrecta!</p>
+                    <a id="btnSend" href="javascript:login();" class="btn light-blue darken-4 col s4 offset-s4 waves-effect waves-ligh">Ingresar</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+          app.verificar("index");
+        </script>
+    </body>
+</html>

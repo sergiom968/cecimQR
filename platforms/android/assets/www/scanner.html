@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+			<script src='js/jquery.min.js'></script>
+			<link rel="stylesheet" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/materialize.css">
+			<title>CECIM Scanner</title>
+	</head>
+
+	<body>
+		<nav>
+			<div class="nav-wrapper blue-grey darken-3">
+				<a class="brand-logo center light" style="font-size: 20px;">Escaner QR: <span id="spanTitle">Talleres</span></a>
+				<ul id="nav-mobile" style="overflow: auto; transform: translateX(-100%);" class="side-nav white lighten-4">
+					<li>
+						<div class="background">
+							<img src="img/logoV.png" style="width: 100%;">
+						</div>
+					</li>
+					<li><div class="divider"></div></li>
+					<li><a href="javascript:action('talleres');" class="waves-effect waves-light"><i class="small"><span class="icon-library_books"></span></i>Talleres</a></li>
+					<li><a href="javascript:action('asistencia');" class="waves-effect waves-light"><i class="small"><span class="icon-person_add"></span></i>Asistencia</a></li>
+					<li><a href="javascript:action('refrigerio');" class="waves-effect waves-light"><i class="small"><span class="icon-restaurant_menu"></span></i>Refrigerio</a></li>
+					<li><a href="javascript:exit()" class="waves-effect waves-light"><i class="small"><span class="icon-exit_to_app"></span></i>Salir</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="small"><span class="icon-menu"></span></i></a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="section">
+				<div class="row">
+					<div id="content" class="col s12">
+						<div class="col s12">
+							<div class="center">
+								<img v-bind:src="'img/' + datos[0].Image" class="center">
+							</div>
+							<h5 class="center light blue-text text-darken-3">{{datos[0].Msg}}</h5>
+							<p>
+								<span class="blue-text text-darken-3">Nombre: </span>{{datos[0].Nombres}} {{_datos[0].Apellidos}}<br/>
+								<span class="blue-text text-darken-3">Documento: </span>{{datos[0].Documento}}<br/>
+								<span class="blue-text text-darken-3">Correo: </span>{{datos[0].Correo}}<br/>
+								<span v-if="datos[0].Taller"><span class="blue-text text-darken-3">Taller: </span>{{datos[0].Taller}}</span>
+							</p>
+							<br/>
+							<!--<pre>
+								{{datos}}
+							</pre>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fixed-action-btn">
+			<a class="btn-floating btn-large blue-grey darken-3 waves-effect waves-light" href="javascript:scan();">
+				<i class="large">
+					<span class="icon-photo_camera"></span>
+				</i>
+			</a>
+		</div>
+		<script type="text/javascript" src="js/materialize.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/vue.min.js"></script>
+		<script type="text/javascript">
+			app.verificar("scanner");
+			$('.button-collapse').sideNav();
+			var _datos = [{
+				Image: "qr.png",
+				Msg: "Escanee un código"
+			}];
+			var content = new Vue({
+				el: "#content",
+				data: {
+					datos: _datos
+				}
+			});
+		</script>
+	</body>
+</html>
